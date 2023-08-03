@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OwHkyA9Hh1W4oDL4snWo/NJpqoZGOh+GNgj41MCbf5o=",
+  "Source": "WebAppAzureSqlServer",
+  "BasePath": "_content/WebAppAzureSqlServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
