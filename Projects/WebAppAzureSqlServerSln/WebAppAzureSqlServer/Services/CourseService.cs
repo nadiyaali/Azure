@@ -7,6 +7,7 @@ namespace WebAppAzureSqlServer.Service
     public class CourseService 
     {
 
+        // Thse are used to create a connection string for azure sql server
         // Ensure to change the below variables to reflect the connection details for your database
         //private static string db_source = "dbserver10001.database.windows.net";
         //private static string db_user = "demousr";
