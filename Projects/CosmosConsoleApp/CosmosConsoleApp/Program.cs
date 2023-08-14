@@ -6,7 +6,7 @@ namespace CosmosConsoleApp
 {
     class Program
     {
-        private static readonly string _connection_string = "AccountEndpoint=https://cosmosdemo222.documents.azure.com:443/;AccountKey=wVIUm9x5thMtcsVlPlcK5NHuHSfCbaXg3kKMV133Nuvz8CX1jga2VJTREOIg2VWSLIPhmhMeTIGfACDbblWcoA==;";
+        private static readonly string _connection_string = "";
         private static readonly string _database_name = "appdb";
         private static readonly string _container_name = "course";
         private static readonly string _partition_key = "/courseid";
