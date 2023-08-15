@@ -6,7 +6,8 @@ namespace CosmosConsoleApp
 {
     class Program
     {
-        private static readonly string _connection_string = "";
+        private static readonly string _connection_string = "AccountEndpoint=https://cosmosdemo222.documents.azure.com:443/;AccountKey=wVIUm9x5thMtcsVlPlcK5NHuHSfCbaXg3kKMV133Nuvz8CX1jga2VJTREOIg2VWSLIPhmhMeTIGfACDbblWcoA==;";
+        //private static readonly string _connection_string = "";
         private static readonly string _database_name = "appdb";
         private static readonly string _container_name = "course";
         private static readonly string _partition_key = "/courseid";
@@ -20,7 +21,9 @@ namespace CosmosConsoleApp
             //ReadRecord();
             //UpdateRecord();
             //DeleteRecord();
-            ExecuteStoredProcedure();
+            //ExecuteStoredProcedure();
+            //ExecuteStoredProcedureAdd();
+            //ExecuteTrigger();
             Console.ReadKey();
         }
 
@@ -181,5 +184,39 @@ namespace CosmosConsoleApp
         }
 
 
+        public async static void ExecuteStoredProcedureAdd()
+        {
+            CosmosClient _cosmosclient = new CosmosClient(_connection_string);
+
+            // Get the container from db
+            Container _container = _cosmosclient.GetContainer(_database_name, _container_name);
+            // Create a dynamic list of items
+            dynamic[] _items = new dynamic[]
+                {
+                 new {id="6",courseid="C00106",coursename="AZ-500 Azure Security",rating=4.4m}
+                };
+            
+            string _output = await _container.Scripts.ExecuteStoredProcedureAsync<string>("addCourse", new PartitionKey("C00106"), new[] {_items });
+            Console.WriteLine($"Output from stored procedure : {_output}");
+
         }
+
+        public async static void ExecuteTrigger()
+        {
+            // Trigger not working in cosmosdb
+            CosmosClient _cosmosclient = new CosmosClient(_connection_string, new CosmosClientOptions());
+
+            Container _container = _cosmosclient.GetContainer(_database_name, _container_name);
+
+
+            Course _course = new Course() { id = "6", courseid = "C00107", coursename = "AZ-500 Azure Security", rating = 4.2m };
+
+            await _container.CreateItemAsync(_course, null, new ItemRequestOptions { PreTriggers = new List<string> { "AddTrigger" } });
+
+            Console.WriteLine("Item created with pre trigger");
+           
+        }
+
+
     }
+}
