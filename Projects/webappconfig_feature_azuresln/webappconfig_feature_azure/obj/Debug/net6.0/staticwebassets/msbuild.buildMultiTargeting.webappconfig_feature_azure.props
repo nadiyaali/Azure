@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\webappconfig_feature_azure.props" />
+</Project>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\webappconfig_feature_azure.props" />
+</Project>
