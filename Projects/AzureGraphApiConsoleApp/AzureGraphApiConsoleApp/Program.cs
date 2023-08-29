@@ -17,6 +17,10 @@
 10. Get the Directory(tenant) ID : 
 11. Install the nuget Package Microsoft.Graph and Azure.Identity
 12. Add in code to create a Graph Client and the access display names of all users
+13. Better way to do it is to use Azure Managed Identities which can be of two typed:
+System Managed and User Managed. System Managed ID is for one resource only, 
+User Managed ID can be assigned to multiple resources. In this way, no secrets, passwords
+or keys are required.
  */
 
 using Azure.Identity;
